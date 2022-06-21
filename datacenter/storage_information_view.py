@@ -7,9 +7,9 @@ from datetime import timedelta
 
 
 def storage_information_view(request):
-    visits_active = Visit.objects.filter(leaved_at=None)
+    visitors_in_storage = Visit.objects.filter(leaved_at=None)
     non_closed_visits = []
-    for visit in visits_active:
+    for visit in visitors_in_storage:
         non_closed_visits.append({
             'who_entered': visit.passcard.owner_name,
             'entered_at': visit.entered_at,
