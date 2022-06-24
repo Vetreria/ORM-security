@@ -8,9 +8,9 @@ from datetime import timedelta
 
 def storage_information_view(request):
     visitors_in_storage = Visit.objects.filter(leaved_at=None)
-    non_closed_visits = []
+    serialized_visits = []
     for visit in visitors_in_storage:
-        non_closed_visits.append({
+        serialized_visits.append({
             'who_entered': visit.passcard.owner_name,
             'entered_at': visit.entered_at,
             'duration': format_duration(get_duration(visit)),
@@ -18,6 +18,6 @@ def storage_information_view(request):
         })
 
     context = {
-        'non_closed_visits': non_closed_visits,
+        'non_closed_visits': serialized_visits,
     }
     return render(request, 'storage_information.html', context)
