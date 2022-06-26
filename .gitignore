@@ -1,4 +1,5 @@
 env_orm/
+env/
 .env
 datacenter/__pycache__/
 project/__pycache__/
